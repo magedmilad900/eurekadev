@@ -8,7 +8,7 @@ from model import assess_water_quality, risk_color
 
 st.set_page_config(
     page_title="GreenWatch | Water Intelligence",
-    page_icon="💧",
+    page_icon="GW",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -59,7 +59,7 @@ st.markdown(
 
     .hero { min-height: 390px; border: 1px solid rgba(52,75,134,.12); border-radius: 42px; padding: 4.4rem 4.5rem; margin-bottom: 2.2rem; background: linear-gradient(125deg, #d6f5ff 0%, #eee7ff 54%, #ffe1d6 100%); box-shadow: 0 25px 60px rgba(67, 66, 120, .16); position: relative; overflow: hidden; display: flex; align-items: center; }
     .hero:before { content: ''; position: absolute; width: 300px; height: 300px; right: -70px; bottom: -110px; border-radius: 50%; background: rgba(255,255,255,.48); }
-    .hero:after { content: '✦  ✧  ✦'; position: absolute; right: 34px; top: 24px; color: rgba(255,255,255,.9); font-size: 3rem; letter-spacing: 12px; }
+    .hero:after { content: '◦  •  ◦'; position: absolute; right: 34px; top: 24px; color: rgba(255,255,255,.9); font-size: 3rem; letter-spacing: 12px; }
     .hero h1 { margin: 0; }
     .hero p { max-width: 780px; color: #42577b; font-size: 1.5rem; margin: 1.1rem 0 0; line-height: 1.35; }
     .eyebrow { text-transform: uppercase; font-size: .95rem; letter-spacing: 2px; color: #357895; font-weight: 700; }
@@ -74,6 +74,7 @@ st.markdown(
     .success-box { background: linear-gradient(135deg,#ddf9e9,#d8f1ff); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
     .footer { text-align: center; color: var(--muted); padding: 2rem 0 1rem; font-size: 1rem; }
     .brand { display: inline-block; background: linear-gradient(135deg,#ffffff,#e8e1ff); border: 1px solid rgba(52,75,134,.12); border-radius: 18px; padding: .35rem 1rem; box-shadow: 0 8px 20px rgba(67,66,120,.12); font-size: 1.8rem; font-weight: 800; }
+    .mono-icon { display: inline-grid; place-items: center; width: 1.35em; height: 1.35em; border: 2px solid var(--ink); border-radius: 50%; font-size: .8em; line-height: 1; }
     div.stButton > button, div.stDownloadButton > button { border: 0; border-radius: 18px; background: linear-gradient(135deg,var(--navy),var(--purple)); color: white !important; font-weight: 800; padding: .95rem 1.5rem; box-shadow: 0 10px 20px rgba(52,75,134,.22); transition: transform .2s, box-shadow .2s; }
     div.stButton > button *, div.stDownloadButton > button * { color: white !important; }
     div.stButton > button:hover, div.stDownloadButton > button:hover { background: linear-gradient(135deg,#263b73,#8064dc); color: white !important; transform: translateY(-3px); box-shadow: 0 15px 24px rgba(52,75,134,.28); }
@@ -111,12 +112,12 @@ if "last_result" not in st.session_state:
 
 # ---------- Sidebar navigation ----------
 with st.sidebar:
-    st.markdown("<div class='brand'>💧 GreenWatch</div>", unsafe_allow_html=True)
+    st.markdown("<div class='brand'><span class='mono-icon'>◉</span> GreenWatch</div>", unsafe_allow_html=True)
     st.caption("Little measurements. Better decisions.")
     st.divider()
     page = st.radio(
         "Explore",
-        ["🏡 Home", "🔬 Water Check", "📊 My Dashboard", "🌱 Learn & Act"],
+        ["⌂ Home", "◌ Water Check", "▦ My Dashboard", "✿ Learn & Act"],
         label_visibility="collapsed",
     )
     st.divider()
@@ -138,11 +139,11 @@ def show_result(result, source):
     st.progress(result["score"] / 100)
     left, right = st.columns(2)
     with left:
-        st.markdown("### 🔎 What influenced the score?")
+        st.markdown("### ◌ What influenced the score?")
         for reason in result["reasons"]:
             st.markdown(f"- {reason}")
     with right:
-        st.markdown("### 🧭 Suggested next steps")
+        st.markdown("### → Suggested next steps")
         for step in result["recommendations"]:
             st.markdown(f"- {step}")
     st.markdown(
@@ -152,18 +153,18 @@ def show_result(result, source):
 
 
 # ---------- Pages ----------
-if page == "🏡 Home":
+if page == "⌂ Home":
     st.markdown(
-        "<div class='hero'><div><div class='eyebrow'>Community water intelligence</div><h1>Make every drop count.</h1><p>GreenWatch turns simple water measurements into a colorful, understandable first step for environmental action.</p></div><div class='hero-art'>💧</div></div>",
+        "<div class='hero'><div><div class='eyebrow'>Community water intelligence</div><h1>Make every drop count.</h1><p>GreenWatch turns simple water measurements into a colorful, understandable first step for environmental action.</p></div><div class='hero-art'>◉</div></div>",
         unsafe_allow_html=True,
     )
     a, b, c = st.columns(3)
     with a:
-        st.markdown("<div class='card'><h3>🌈 Simple</h3><p>Five easy measurements, one friendly result.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h3>◌ Simple</h3><p>Five easy measurements, one friendly result.</p></div>", unsafe_allow_html=True)
     with b:
-        st.markdown("<div class='card'><h3>🔍 Explainable</h3><p>See exactly what made the score change.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h3>◎ Explainable</h3><p>See exactly what made the score change.</p></div>", unsafe_allow_html=True)
     with c:
-        st.markdown("<div class='card'><h3>🤝 Community-first</h3><p>Built for classrooms, clubs, and local groups.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h3>⌁ Community-first</h3><p>Built for classrooms, clubs, and local groups.</p></div>", unsafe_allow_html=True)
 
     st.markdown("## Ready for a quick check?")
     st.markdown("Use the menu on the left to start a water check, explore your dashboard, or learn how to take action.")
@@ -173,14 +174,14 @@ if page == "🏡 Home":
     with y:
         st.markdown("<div class='tip'><b>Best for a demo</b><br>Try a normal sample first, then enter concerning values to see the explanation change.</div>", unsafe_allow_html=True)
 
-elif page == "🔬 Water Check":
-    st.markdown("<div class='eyebrow'>Step 1 of 1</div><h1>🔬 Check your water</h1>", unsafe_allow_html=True)
+elif page == "◌ Water Check":
+    st.markdown("<div class='eyebrow'>Step 1 of 1</div><h1>◌ Check your water</h1>", unsafe_allow_html=True)
     st.write("Enter readings from a test kit or classroom experiment. All fields stay on this page.")
     with st.container():
-        st.markdown("<div class='card'><h3>📍 Sample details</h3><p>Give your observation a little context.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h3>⌖ Sample details</h3><p>Give your observation a little context.</p></div>", unsafe_allow_html=True)
         source = st.selectbox("Water source", ["River / stream", "Lake / pond", "Well", "School fountain", "Unknown"])
         location = st.text_input("Location nickname (optional)", placeholder="e.g. North creek")
-    st.markdown("### 📏 Measurements")
+    st.markdown("### ∙ Measurements")
     col1, col2, col3 = st.columns(3)
     with col1:
         ph = st.number_input("pH", 0.0, 14.0, 7.0, 0.1, help="Acidity or alkalinity")
@@ -190,9 +191,9 @@ elif page == "🔬 Water Check":
         dissolved_oxygen = st.number_input("Dissolved oxygen (mg/L)", 0.0, 20.0, 7.0, 0.1)
     with col3:
         temperature = st.number_input("Temperature (°C)", -10.0, 60.0, 20.0, 0.5)
-        st.markdown("<div class='tip'>💡 Tip: record readings at the same time and place when comparing samples.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='tip'>i Tip: record readings at the same time and place when comparing samples.</div>", unsafe_allow_html=True)
 
-    if st.button("✨ Assess my sample", use_container_width=True):
+    if st.button("Assess my sample  →", use_container_width=True):
         result = assess_water_quality(ph, turbidity, nitrate, dissolved_oxygen, temperature)
         entry = {
             "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -213,11 +214,11 @@ elif page == "🔬 Water Check":
     if st.session_state.last_result:
         show_result(*st.session_state.last_result)
 
-elif page == "📊 My Dashboard":
-    st.markdown("<div class='eyebrow'>Your session summary</div><h1>📊 My dashboard</h1>", unsafe_allow_html=True)
+elif page == "▦ My Dashboard":
+    st.markdown("<div class='eyebrow'>Your session summary</div><h1>▦ My dashboard</h1>", unsafe_allow_html=True)
     history = st.session_state.history
     if not history:
-        st.markdown("<div class='card'><h3>No samples yet 🌱</h3><p>Run your first Water Check and your personal session dashboard will appear here.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h3>No samples yet ·</h3><p>Run your first Water Check and your personal session dashboard will appear here.</p></div>", unsafe_allow_html=True)
     else:
         high = sum(1 for item in history if item["risk"] == "High")
         moderate = sum(1 for item in history if item["risk"] == "Moderate")
@@ -230,35 +231,35 @@ elif page == "📊 My Dashboard":
         with m3:
             st.markdown(metric_card(f"{high + moderate}", "Samples needing attention", "#e87952"), unsafe_allow_html=True)
 
-        st.markdown("### 🧾 Recent samples")
+        st.markdown("### ≡ Recent samples")
         st.dataframe(history[::-1], use_container_width=True, hide_index=True)
         output = io.StringIO()
         writer = csv.DictWriter(output, fieldnames=history[0].keys())
         writer.writeheader()
         writer.writerows(history)
-        st.download_button("⬇️ Download session CSV", output.getvalue(), "greenwatch_samples.csv", "text/csv", use_container_width=True)
-        if st.button("🧹 Clear session history"):
+        st.download_button("↓ Download session CSV", output.getvalue(), "greenwatch_samples.csv", "text/csv", use_container_width=True)
+        if st.button("× Clear session history"):
             st.session_state.history = []
             st.session_state.last_result = None
             st.rerun()
 
-elif page == "🌱 Learn & Act":
-    st.markdown("<div class='eyebrow'>Small actions, real impact</div><h1>🌱 Learn & act</h1>", unsafe_allow_html=True)
+elif page == "✿ Learn & Act":
+    st.markdown("<div class='eyebrow'>Small actions, real impact</div><h1>✿ Learn & act</h1>", unsafe_allow_html=True)
     st.write("Use these mini-guides to turn a measurement into a thoughtful environmental conversation.")
     topics = {
-        "🧪 Understand the readings": [
+        "◌ Understand the readings": [
             "pH describes how acidic or alkaline water is.",
             "Turbidity describes how cloudy water is because of suspended particles.",
             "Nitrate can rise because of fertilizer, wastewater, or runoff.",
             "Dissolved oxygen helps describe conditions for aquatic life.",
         ],
-        "📸 Make observations useful": [
+        "□ Make observations useful": [
             "Write down the date, time, weather, and exact location.",
             "Take a photo of unusual color, foam, algae, or nearby runoff.",
             "Repeat surprising readings before drawing conclusions.",
             "Never taste unknown water or handle it without appropriate care.",
         ],
-        "🤝 Turn data into action": [
+        "⌁ Turn data into action": [
             "Share repeated concerns with a teacher, local environmental group, or authority.",
             "Compare multiple locations instead of blaming a single source immediately.",
             "Ask for certified laboratory testing when drinking water may be affected.",
