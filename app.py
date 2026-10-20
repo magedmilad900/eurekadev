@@ -94,9 +94,16 @@ st.markdown(
     .hero p { max-width: 780px; color: #42577b; font-size: 1.5rem; margin: 1.1rem 0 0; line-height: 1.35; }
     .eyebrow { text-transform: uppercase; font-size: .95rem; letter-spacing: 2px; color: #357895; font-weight: 700; }
 
-    .card { background: rgba(255,255,255,.8); border: 1px solid rgba(52,75,134,.14); border-radius: 32px; padding: 2.2rem 2.35rem; min-height: 190px; box-shadow: 0 18px 42px rgba(67, 66, 120, .1); margin-bottom: 1.6rem; backdrop-filter: blur(10px); }
+    .card { position: relative; background: rgba(255,255,255,.8); border: 1px solid rgba(52,75,134,.14); border-radius: 32px; padding: 2.2rem 2.35rem; min-height: 190px; box-shadow: 0 18px 42px rgba(67, 66, 120, .1); margin-bottom: 1.6rem; backdrop-filter: blur(10px); }
     .card h3 { margin: 0 0 .25rem; }
     .card p { color: var(--muted); margin: 0; }
+    .card.card-peach { background: #ffe0d8; border: 3px solid #d96f65; box-shadow: inset 0 0 0 3px rgba(255,255,255,.42), 7px 7px 0 #d96f65; }
+    .card.card-aqua { background: #d5f4fb; border: 3px solid #4a9eb4; box-shadow: inset 0 0 0 3px rgba(255,255,255,.48), 7px 7px 0 #4a9eb4; }
+    .card.card-lavender { background: #ebe5ff; border: 3px solid #7966c2; box-shadow: inset 0 0 0 3px rgba(255,255,255,.48), 7px 7px 0 #7966c2; }
+    .card.card-mint { background: #d9f5e5; border: 3px solid #4b9d72; box-shadow: inset 0 0 0 3px rgba(255,255,255,.48), 7px 7px 0 #4b9d72; }
+    .card.card-sun { background: #fff0bd; border: 3px solid #c89c43; box-shadow: inset 0 0 0 3px rgba(255,255,255,.48), 7px 7px 0 #c89c43; }
+    .card.card-rose { background: #ffd9e5; border: 3px solid #bd6586; box-shadow: inset 0 0 0 3px rgba(255,255,255,.48), 7px 7px 0 #bd6586; }
+    .card.card-peach::after, .card.card-aqua::after, .card.card-lavender::after, .card.card-mint::after, .card.card-sun::after, .card.card-rose::after { content: '•  ·  •'; position: absolute; right: 18px; top: 8px; color: rgba(24,37,63,.35); font-size: 1.4rem; letter-spacing: 5px; }
     .metric-card { text-align: center; background: linear-gradient(145deg,#f7f5ff,#e4f8ff); }
     .metric-number { font-size: 3.8rem; color: var(--navy); line-height: 1; font-weight: bold; }
     .metric-label { color: var(--muted); font-size: 1.1rem; }
@@ -156,14 +163,14 @@ with st.sidebar:
     st.caption("EurekaDev • Coding Track")
 
 
-def metric_card(number, label, color="#2389c9"):
-    return f"<div class='card metric-card'><div class='metric-number' style='color:{color}'>{number}</div><div class='metric-label'>{label}</div></div>"
+def metric_card(number, label, color="#2389c9", tone="card-aqua"):
+    return f"<div class='card metric-card {tone}'><div class='metric-number' style='color:{color}'>{number}</div><div class='metric-label'>{label}</div></div>"
 
 
 def show_result(result, source):
     color = risk_color(result["risk"])
     st.markdown(
-        f"<div class='card' style='border-top:8px solid {color};'><h2>Screening result: <span style='color:{color}'>{result['risk']}</span></h2><p>Water source: {source} · Score: {result['score']}/100</p></div>",
+        f"<div class='card card-lavender' style='border-top:8px solid {color};'><h2>Screening result: <span style='color:{color}'>{result['risk']}</span></h2><p>Water source: {source} · Score: {result['score']}/100</p></div>",
         unsafe_allow_html=True,
     )
     st.progress(result["score"] / 100)
@@ -190,11 +197,11 @@ if page == "⌂ Home":
     )
     a, b, c = st.columns(3)
     with a:
-        st.markdown("<div class='card'><h3>◌ Simple</h3><p>Five easy measurements, one friendly result.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card card-mint'><h3>◌ Simple</h3><p>Five easy measurements, one friendly result.</p></div>", unsafe_allow_html=True)
     with b:
-        st.markdown("<div class='card'><h3>◎ Explainable</h3><p>See exactly what made the score change.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card card-aqua'><h3>◎ Explainable</h3><p>See exactly what made the score change.</p></div>", unsafe_allow_html=True)
     with c:
-        st.markdown("<div class='card'><h3>⌁ Community-first</h3><p>Built for classrooms, clubs, and local groups.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card card-peach'><h3>⌁ Community-first</h3><p>Built for classrooms, clubs, and local groups.</p></div>", unsafe_allow_html=True)
 
     st.markdown("## Ready for a quick check?")
     st.markdown("Use the menu on the left to start a water check, explore your dashboard, or learn how to take action.")
@@ -208,7 +215,7 @@ elif page == "◌ Water Check":
     st.markdown("<div class='eyebrow'>Step 1 of 1</div><h1>◌ Check your water</h1>", unsafe_allow_html=True)
     st.write("Enter readings from a test kit or classroom experiment. All fields stay on this page.")
     with st.container():
-        st.markdown("<div class='card'><h3>⌖ Sample details</h3><p>Give your observation a little context.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card card-aqua'><h3>⌖ Sample details</h3><p>Give your observation a little context.</p></div>", unsafe_allow_html=True)
         source = st.selectbox("Water source", ["River / stream", "Lake / pond", "Well", "School fountain", "Unknown"])
         location = st.text_input("Location nickname (optional)", placeholder="e.g. North creek")
     st.markdown("### ∙ Measurements")
@@ -248,18 +255,18 @@ elif page == "▦ My Dashboard":
     st.markdown("<div class='eyebrow'>Your session summary</div><h1>▦ My dashboard</h1>", unsafe_allow_html=True)
     history = st.session_state.history
     if not history:
-        st.markdown("<div class='card'><h3>No samples yet ·</h3><p>Run your first Water Check and your personal session dashboard will appear here.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card card-lavender'><h3>No samples yet ·</h3><p>Run your first Water Check and your personal session dashboard will appear here.</p></div>", unsafe_allow_html=True)
     else:
         high = sum(1 for item in history if item["risk"] == "High")
         moderate = sum(1 for item in history if item["risk"] == "Moderate")
         average = round(sum(item["score"] for item in history) / len(history))
         m1, m2, m3 = st.columns(3)
         with m1:
-            st.markdown(metric_card(len(history), "Samples checked"), unsafe_allow_html=True)
+            st.markdown(metric_card(len(history), "Samples checked", tone="card-mint"), unsafe_allow_html=True)
         with m2:
-            st.markdown(metric_card(average, "Average risk score", "#8067d9"), unsafe_allow_html=True)
+            st.markdown(metric_card(average, "Average risk score", "#8067d9", "card-lavender"), unsafe_allow_html=True)
         with m3:
-            st.markdown(metric_card(f"{high + moderate}", "Samples needing attention", "#e87952"), unsafe_allow_html=True)
+            st.markdown(metric_card(f"{high + moderate}", "Samples needing attention", "#e87952", "card-peach"), unsafe_allow_html=True)
 
         st.markdown("### ≡ Recent samples")
         st.dataframe(history[::-1], use_container_width=True, hide_index=True)
