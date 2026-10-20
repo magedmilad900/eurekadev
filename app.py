@@ -7,7 +7,7 @@ import streamlit as st
 from model import assess_water_quality, risk_color
 
 st.set_page_config(
-    page_title="GreenWatch",
+    page_title="eurekadev",
     page_icon="GW",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -111,11 +111,12 @@ st.markdown(
     .tip { background: linear-gradient(135deg,#fff4ca,#ffe3df); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
     .success-box { background: linear-gradient(135deg,#ddf9e9,#d8f1ff); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
     .footer { text-align: center; color: var(--muted); padding: 3rem 0 1rem; font-size: 1rem; }
-    .brand { display: inline-flex; align-items: center; gap: .65rem; background: linear-gradient(135deg,#ffffff,#e8e1ff); border: 1px solid rgba(52,75,134,.12); border-radius: 20px; padding: .45rem 1.15rem .45rem .55rem; box-shadow: 0 8px 20px rgba(67,66,120,.12); font-size: 1.8rem; font-weight: 800; }
+    .brand { display: flex; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg,#ffffff,#e8e1ff); border: 1px solid rgba(52,75,134,.12); border-radius: 20px; padding: .6rem 1rem; box-shadow: 0 8px 20px rgba(67,66,120,.12); font-size: 2rem; font-weight: 800; letter-spacing: .8px; }
     .mono-icon { display: inline-grid; place-items: center; width: 1.55em; height: 1.55em; border: 3px solid var(--navy); border-radius: 48% 52% 54% 46%; background: linear-gradient(145deg, var(--blue), var(--purple)); color: white; font-size: .82em; line-height: 1; transform: rotate(-8deg); box-shadow: 3px 3px 0 rgba(24,37,63,.75); }
-    div.stButton > button, div.stDownloadButton > button { border: 0; border-radius: 18px; background: linear-gradient(135deg,var(--navy),var(--purple)); color: white !important; font-weight: 800; padding: .95rem 1.5rem; box-shadow: 0 10px 20px rgba(52,75,134,.22); transition: transform .2s, box-shadow .2s; }
+    div.stButton > button, div.stDownloadButton > button { border: 0; border-radius: 20px; background: linear-gradient(135deg,#6f42d8 0%,#9568f2 52%,#c18cff 100%); color: white !important; font-weight: 800; padding: .95rem 1.5rem; box-shadow: 0 12px 24px rgba(111,66,216,.32), inset 0 1px 0 rgba(255,255,255,.35); transition: transform .2s, box-shadow .2s, filter .2s; }
     div.stButton > button *, div.stDownloadButton > button * { color: white !important; }
-    div.stButton > button:hover, div.stDownloadButton > button:hover { background: linear-gradient(135deg,#263b73,#8064dc); color: white !important; transform: translateY(-3px); box-shadow: 0 15px 24px rgba(52,75,134,.28); }
+    div.stButton > button:hover, div.stDownloadButton > button:hover { background: linear-gradient(135deg,#5d2fc6 0%,#8052e6 52%,#b477ff 100%); color: white !important; transform: translateY(-4px) scale(1.01); filter: saturate(1.1); box-shadow: 0 18px 30px rgba(111,66,216,.4), inset 0 1px 0 rgba(255,255,255,.4); }
+    div.stButton > button:active, div.stDownloadButton > button:active { transform: translateY(-1px) scale(.99); }
     [data-testid="stMetric"] { background: rgba(255,255,255,.8); border: 1px solid rgba(52,75,134,.14); border-radius: 24px; padding: 1.4rem; box-shadow: 0 12px 28px rgba(67, 66, 120, .1); }
     input, textarea, select, [data-baseweb="select"] > div, [data-baseweb="input"] > div { border: 1px solid rgba(52,75,134,.22) !important; border-radius: 16px !important; background: rgba(255,255,255,.9) !important; min-height: 48px; font-family: 'Abel', sans-serif !important; font-size: 1.12rem !important; }
     input::placeholder, textarea::placeholder { font-family: 'Abel', sans-serif !important; color: #8a91a4 !important; }
@@ -165,7 +166,7 @@ if "last_result" not in st.session_state:
 
 # ---------- Sidebar navigation ----------
 with st.sidebar:
-    st.markdown("<div class='brand'><span class='mono-icon'>G</span><span>GreenWatch</span></div>", unsafe_allow_html=True)
+    st.markdown("<div class='brand'>eurekadev</div>", unsafe_allow_html=True)
     st.caption("Little measurements. Better decisions.")
     st.divider()
     page = st.radio(
@@ -174,9 +175,9 @@ with st.sidebar:
         label_visibility="collapsed",
     )
     st.divider()
-    st.markdown("### Why GreenWatch?")
+    st.markdown("### Why eurekadev?")
     st.info("A friendly, explainable first screen for schools and communities. It runs locally and stores no personal data.")
-    st.caption("GreenWatch")
+    st.caption("eurekadev")
 
 
 def metric_card(number, label, color="#2389c9", tone="card-aqua"):
@@ -200,7 +201,7 @@ def show_result(result, source):
         for step in result["recommendations"]:
             st.markdown(f"- {step}")
     st.markdown(
-        "<div class='tip'><b>Friendly reminder:</b> GreenWatch is an educational screening tool, not a certified laboratory test. Do not use it alone to decide whether water is safe to drink.</div>",
+        "<div class='tip'><b>Friendly reminder:</b> eurekadev is an educational screening tool, not a certified laboratory test. Do not use it alone to decide whether water is safe to drink.</div>",
         unsafe_allow_html=True,
     )
 
@@ -208,7 +209,7 @@ def show_result(result, source):
 # ---------- Pages ----------
 if page == "⌂ Home":
     st.markdown(
-        "<div class='hero'><div><div class='eyebrow'>Community water intelligence</div><h1>Make every drop count.</h1><p>GreenWatch turns simple water measurements into a colorful, understandable first step for environmental action.</p></div><div class='hero-art'>◉</div></div>",
+        "<div class='hero'><div><div class='eyebrow'>Community water intelligence</div><h1>Make every drop count.</h1><p>eurekadev turns simple water measurements into a colorful, understandable first step for environmental action.</p></div><div class='hero-art'>◉</div></div>",
         unsafe_allow_html=True,
     )
     a, b, c = st.columns(3)
@@ -290,7 +291,7 @@ elif page == "▦ My Dashboard":
         writer = csv.DictWriter(output, fieldnames=history[0].keys())
         writer.writeheader()
         writer.writerows(history)
-        st.download_button("↓ Download session CSV", output.getvalue(), "greenwatch_samples.csv", "text/csv", use_container_width=True)
+        st.download_button("↓ Download session CSV", output.getvalue(), "eurekadev_samples.csv", "text/csv", use_container_width=True)
         if st.button("× Clear session history"):
             st.session_state.history = []
             st.session_state.last_result = None
@@ -323,6 +324,6 @@ elif page == "✿ Learn & Act":
         with st.expander(title, expanded=True):
             for bullet in bullets:
                 st.markdown(f"- {bullet}")
-    st.markdown("<div class='success-box'><b>GreenWatch principle:</b> good environmental technology should make people more curious, more informed, and more connected to qualified experts.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='success-box'><b>eurekadev principle:</b> good environmental technology should make people more curious, more informed, and more connected to qualified experts.</div>", unsafe_allow_html=True)
 
-st.markdown("<div class='footer'>GreenWatch</div>", unsafe_allow_html=True)
+st.markdown("<div class='footer'>eurekadev</div>", unsafe_allow_html=True)
