@@ -20,69 +20,59 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
 
     :root {
-        --ink: #17324d;
-        --muted: #668096;
-        --cream: #fffaf0;
-        --sky: #dff5ff;
-        --mint: #dff8e8;
-        --yellow: #fff1a8;
-        --coral: #ffb4a2;
-        --blue: #2389c9;
-        --green: #22a06b;
-        --purple: #8067d9;
+        --ink: #2b1b3d;
+        --muted: #5f526c;
+        --bg: #fff9e9;
+        --sky: #bdefff;
+        --mint: #c9f3d9;
+        --yellow: #ffe58a;
+        --pink: #ffc1d9;
+        --coral: #ff9f8a;
+        --blue: #51c6e8;
+        --green: #41bd82;
+        --purple: #8f76dc;
+        --sh: 5px 5px 0 var(--ink);
     }
 
     html, body, [class*="css"] {
         font-family: 'Shadows Into Light Two', cursive;
         color: var(--ink);
     }
-    .stApp {
-        background: radial-gradient(circle at 8% 5%, #fff3ad 0, transparent 22%),
-                    radial-gradient(circle at 95% 18%, #c9f2ff 0, transparent 28%),
-                    linear-gradient(135deg, #fffdf7 0%, #f1fbff 100%);
-    }
-    .block-container { max-width: 1180px; padding-top: 1.2rem; }
-    h1, h2, h3 { color: var(--ink); letter-spacing: .3px; }
-    h1 { font-size: 3.2rem !important; line-height: 1.05; }
+    .stApp { background-color: var(--bg); background-image: radial-gradient(var(--ink) 1.2px, transparent 1.3px); background-size: 26px 26px; }
+    .block-container { max-width: 980px; padding-top: 1.2rem; padding-bottom: 3rem; }
+    h1, h2, h3 { color: var(--ink); letter-spacing: .3px; font-weight: 800 !important; }
+    h1 { font-size: 3.15rem !important; line-height: 1.05; }
     h2 { font-size: 2rem !important; }
     h3 { font-size: 1.4rem !important; }
     p, label, .stMarkdown, .stButton button, .stSelectbox, .stNumberInput { font-size: 1.08rem; }
 
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #e9f9ff 0%, #f7edff 55%, #fff8d9 100%);
-        border-right: 2px solid rgba(35,137,201,.12);
-    }
+    [data-testid="stSidebar"] { background: linear-gradient(180deg, #bdefff 0%, #e9dfff 55%, #ffe58a 100%); border-right: 4px solid var(--ink); }
     [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] h3 { color: var(--ink); }
-    [data-testid="stSidebar"] .stRadio label { font-size: 1.15rem; }
+    [data-testid="stSidebar"] .stRadio label { font-size: 1.15rem; font-weight: 800; }
 
-    .hero {
-        border-radius: 30px; padding: 2.4rem 2.7rem; margin-bottom: 1.5rem;
-        background: linear-gradient(120deg, #b9efff 0%, #e2f9d7 48%, #fff0a9 100%);
-        box-shadow: 0 14px 40px rgba(49, 117, 146, .15);
-        position: relative; overflow: hidden;
-    }
+    .hero { border: 4px solid var(--ink); border-radius: 28px; padding: 2.4rem 2.7rem; margin-bottom: 1.5rem; background: linear-gradient(120deg, var(--sky) 0%, var(--mint) 48%, var(--yellow) 100%); box-shadow: var(--sh); position: relative; overflow: hidden; }
     .hero:after { content: '✦  ✧  ✦'; position: absolute; right: 28px; top: 18px; color: #fff; font-size: 2rem; }
     .hero h1 { margin: 0; }
     .hero p { max-width: 760px; color: #315a6c; font-size: 1.35rem; margin: .7rem 0 0; }
     .eyebrow { text-transform: uppercase; font-size: .95rem; letter-spacing: 2px; color: #357895; font-weight: 700; }
 
-    .card {
-        background: rgba(255,255,255,.88); border: 1px solid rgba(35,137,201,.14);
-        border-radius: 22px; padding: 1.25rem 1.35rem; min-height: 125px;
-        box-shadow: 0 8px 25px rgba(58, 104, 128, .08); margin-bottom: 1rem;
-    }
+    .card { background: rgba(255,255,255,.94); border: 4px solid var(--ink); border-radius: 28px; padding: 1.25rem 1.35rem; min-height: 125px; box-shadow: var(--sh); margin-bottom: 1.2rem; }
     .card h3 { margin: 0 0 .25rem; }
     .card p { color: var(--muted); margin: 0; }
-    .metric-card { text-align: center; background: linear-gradient(145deg,#fff,#edfaff); }
+    .metric-card { text-align: center; background: var(--sky); }
     .metric-number { font-size: 2.7rem; color: var(--blue); line-height: 1; font-weight: bold; }
     .metric-label { color: var(--muted); font-size: 1rem; }
-    .tip { background: #fff6c7; border-left: 7px solid #f4c542; border-radius: 14px; padding: 1rem 1.2rem; }
-    .success-box { background: #e5faed; border-left: 7px solid var(--green); border-radius: 14px; padding: 1rem 1.2rem; }
+    .tip { background: var(--yellow); border: 3px solid var(--ink); border-radius: 16px; padding: 1rem 1.2rem; box-shadow: 3px 3px 0 var(--ink); }
+    .success-box { background: var(--mint); border: 3px solid var(--ink); border-radius: 16px; padding: 1rem 1.2rem; box-shadow: 3px 3px 0 var(--ink); }
     .footer { text-align: center; color: var(--muted); padding: 2rem 0 1rem; font-size: 1rem; }
-    div.stButton > button { border-radius: 16px; border: 0; background: linear-gradient(90deg,#2389c9,#8067d9); color: white; font-weight: bold; padding: .7rem 1.2rem; }
-    div.stButton > button:hover { background: linear-gradient(90deg,#176caa,#624abf); color: white; transform: translateY(-1px); }
-    [data-testid="stMetric"] { background: white; border-radius: 16px; padding: 1rem; border: 1px solid #dceef5; }
+    .brand { display: inline-block; background: var(--yellow); border: 4px solid var(--ink); border-radius: 16px; padding: .15rem 1rem; box-shadow: 3px 3px 0 var(--ink); transform: rotate(-2deg); font-size: 1.8rem; font-weight: 800; }
+    div.stButton > button { border: 4px solid var(--ink); border-radius: 18px; background: var(--yellow); color: var(--ink); font-weight: 800; padding: .7rem 1.2rem; box-shadow: 4px 4px 0 var(--ink); transition: transform .12s, box-shadow .12s; }
+    div.stButton > button:hover { background: var(--pink); color: var(--ink); transform: translate(-2px,-2px) rotate(-1deg); box-shadow: 6px 6px 0 var(--ink); }
+    [data-testid="stMetric"] { background: var(--sky); border: 3px solid var(--ink); border-radius: 18px; padding: 1rem; box-shadow: 3px 3px 0 var(--ink); }
+    input, textarea, [data-baseweb="select"] > div { border: 3px solid var(--ink) !important; border-radius: 14px !important; background: #fff !important; }
+    [data-testid="stExpander"] { border: 3px solid var(--ink); border-radius: 18px; background: rgba(255,255,255,.8); box-shadow: 3px 3px 0 var(--ink); }
+    [data-testid="stDataFrame"] { border: 3px solid var(--ink); border-radius: 18px; overflow: hidden; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -96,7 +86,7 @@ if "last_result" not in st.session_state:
 
 # ---------- Sidebar navigation ----------
 with st.sidebar:
-    st.markdown("# 💧 GreenWatch")
+    st.markdown("<div class='brand'>💧 GreenWatch</div>", unsafe_allow_html=True)
     st.caption("Little measurements. Better decisions.")
     st.divider()
     page = st.radio(
