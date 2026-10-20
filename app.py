@@ -7,7 +7,7 @@ import streamlit as st
 from model import assess_water_quality, risk_color
 
 st.set_page_config(
-    page_title="GreenWatch | Water Intelligence",
+    page_title="GreenWatch",
     page_icon="GW",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -53,11 +53,13 @@ st.markdown(
     html { font-size: 18px; }
     body, h1, h2, h3, h4, h5, h6, p, label { color: var(--ink); }
     .stApp { background: radial-gradient(circle at 6% 8%, #ffe1d9 0, transparent 25%), radial-gradient(circle at 96% 12%, #d7f3ff 0, transparent 28%), radial-gradient(circle at 80% 92%, #e9ddff 0, transparent 28%), var(--bg); }
-    .block-container { max-width: 1160px; padding-top: 2rem; padding-bottom: 4rem; }
+    .block-container { max-width: 1160px; padding-top: 2.4rem; padding-bottom: 4.5rem; }
+    [data-testid="stVerticalBlock"] { gap: 1rem; }
+    [data-testid="column"] { padding: .25rem .45rem; }
     h1, h2, h3 { color: var(--ink); letter-spacing: .3px; font-weight: 800 !important; }
-    h1 { font-size: clamp(3.2rem, 7vw, 5.7rem) !important; line-height: .98; letter-spacing: -1.5px; }
-    h2 { font-size: 2.55rem !important; }
-    h3 { font-size: 1.65rem !important; }
+    h1 { font-size: clamp(3.2rem, 7vw, 5.7rem) !important; line-height: .98; letter-spacing: -1.5px; margin: .35rem 0 1.15rem !important; }
+    h2 { font-size: 2.55rem !important; margin: .25rem 0 1rem !important; }
+    h3 { font-size: 1.65rem !important; margin: .1rem 0 .7rem !important; }
     p, label, .stMarkdown, .stButton button, .stSelectbox, .stNumberInput,
     [data-testid="stCaptionContainer"], [data-testid="stWidgetLabel"] { font-size: 1.12rem; }
 
@@ -92,7 +94,7 @@ st.markdown(
     .hero:after { content: '◦  •  ◦'; position: absolute; right: 34px; top: 24px; color: rgba(255,255,255,.9); font-size: 3rem; letter-spacing: 12px; }
     .hero h1 { margin: 0; }
     .hero p { max-width: 780px; color: #42577b; font-size: 1.5rem; margin: 1.1rem 0 0; line-height: 1.35; }
-    .eyebrow { text-transform: uppercase; font-size: .95rem; letter-spacing: 2px; color: #357895; font-weight: 700; }
+    .eyebrow { text-transform: uppercase; font-size: 1rem; letter-spacing: 2px; color: #5268a0; font-weight: 700; margin-bottom: .45rem; }
 
     .card { position: relative; background: rgba(255,255,255,.8); border: 1px solid rgba(52,75,134,.14); border-radius: 32px; padding: 2.2rem 2.35rem; min-height: 190px; box-shadow: 0 18px 42px rgba(67, 66, 120, .1); margin-bottom: 1.6rem; backdrop-filter: blur(10px); }
     .card h3 { margin: 0 0 .25rem; }
@@ -109,7 +111,7 @@ st.markdown(
     .metric-label { color: var(--muted); font-size: 1.1rem; }
     .tip { background: linear-gradient(135deg,#fff4ca,#ffe3df); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
     .success-box { background: linear-gradient(135deg,#ddf9e9,#d8f1ff); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
-    .footer { text-align: center; color: var(--muted); padding: 2rem 0 1rem; font-size: 1rem; }
+    .footer { text-align: center; color: var(--muted); padding: 3rem 0 1rem; font-size: 1rem; }
     .brand { display: inline-block; background: linear-gradient(135deg,#ffffff,#e8e1ff); border: 1px solid rgba(52,75,134,.12); border-radius: 18px; padding: .35rem 1rem; box-shadow: 0 8px 20px rgba(67,66,120,.12); font-size: 1.8rem; font-weight: 800; }
     .mono-icon { display: inline-grid; place-items: center; width: 1.35em; height: 1.35em; border: 2px solid var(--ink); border-radius: 50%; font-size: .8em; line-height: 1; }
     div.stButton > button, div.stDownloadButton > button { border: 0; border-radius: 18px; background: linear-gradient(135deg,var(--navy),var(--purple)); color: white !important; font-weight: 800; padding: .95rem 1.5rem; box-shadow: 0 10px 20px rgba(52,75,134,.22); transition: transform .2s, box-shadow .2s; }
@@ -120,7 +122,10 @@ st.markdown(
     input::placeholder, textarea::placeholder { font-family: 'Shadows Into Light Two', cursive !important; color: #8a91a4 !important; }
     [data-baseweb="select"] *, [data-baseweb="popover"] *, [role="listbox"] * { font-family: 'Shadows Into Light Two', cursive !important; }
     [data-testid="stExpander"] { border: 1px solid rgba(52,75,134,.14); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 12px 28px rgba(67, 66, 120, .08); padding: .3rem; }
-    [data-testid="stDataFrame"], [data-testid="stTable"] { border: 1px solid rgba(52,75,134,.14); border-radius: 22px; overflow: hidden; }
+    [data-testid="stDataFrame"], [data-testid="stTable"] { border: 1px solid rgba(52,75,134,.14); border-radius: 22px; overflow: hidden; margin: .8rem 0 1rem; }
+    [data-testid="stProgressBar"] { padding: .25rem 0 .8rem; }
+    [data-testid="stProgressBar"] > div > div { background: linear-gradient(90deg, #5ac58b, #a995ff, #ff9f91); border-radius: 999px; }
+    [data-testid="stAlert"] { border-radius: 20px; margin: 1rem 0; }
     [data-testid="stMetricValue"], [data-testid="stMetricLabel"], [data-testid="stMetricDelta"] { font-family: 'Shadows Into Light Two', cursive !important; }
     [data-testid="stRadio"] label, [data-testid="stCheckbox"] label, [data-testid="stSelectbox"] label { font-family: 'Shadows Into Light Two', cursive !important; }
     .hero-art { position: absolute; right: 7%; bottom: 7%; font-size: 8rem; filter: drop-shadow(0 18px 10px rgba(61,77,130,.16)); animation: floaty 4s ease-in-out infinite; }
@@ -160,7 +165,7 @@ with st.sidebar:
     st.divider()
     st.markdown("### Why GreenWatch?")
     st.info("A friendly, explainable first screen for schools and communities. It runs locally and stores no personal data.")
-    st.caption("EurekaDev • Coding Track")
+    st.caption("GreenWatch")
 
 
 def metric_card(number, label, color="#2389c9", tone="card-aqua"):
@@ -309,4 +314,4 @@ elif page == "✿ Learn & Act":
                 st.markdown(f"- {bullet}")
     st.markdown("<div class='success-box'><b>GreenWatch principle:</b> good environmental technology should make people more curious, more informed, and more connected to qualified experts.</div>", unsafe_allow_html=True)
 
-st.markdown("<div class='footer'>GreenWatch · EurekaDev prototype · Built with Python + Streamlit · Made for curious communities</div>", unsafe_allow_html=True)
+st.markdown("<div class='footer'>GreenWatch</div>", unsafe_allow_html=True)
