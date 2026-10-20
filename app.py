@@ -127,6 +127,18 @@ st.markdown(
     [data-testid="stAlert"] { border-radius: 20px; margin: 1rem 0; }
     [data-testid="stMetricValue"], [data-testid="stMetricLabel"], [data-testid="stMetricDelta"] { font-family: 'Abel', sans-serif !important; }
     [data-testid="stRadio"] label, [data-testid="stCheckbox"] label, [data-testid="stSelectbox"] label { font-family: 'Abel', sans-serif !important; }
+    [data-testid="stNumberInput"] { background: rgba(255,255,255,.86); border: 2px solid rgba(52,75,134,.15); border-radius: 22px; padding: .8rem .9rem .65rem; margin-bottom: .8rem; box-shadow: 0 9px 20px rgba(67,66,120,.08); transition: transform .18s ease, box-shadow .18s ease; }
+    [data-testid="stNumberInput"]:hover { transform: translateY(-3px); box-shadow: 0 14px 25px rgba(67,66,120,.14); }
+    [data-testid="stNumberInput"] label { font-size: 1.12rem !important; font-weight: 700; color: var(--navy) !important; margin-bottom: .25rem; }
+    [data-testid="stNumberInput"] input { min-height: 42px; border: 0 !important; background: transparent !important; box-shadow: none !important; font-size: 1.55rem !important; color: var(--ink) !important; padding: .2rem .4rem !important; }
+    [data-testid="stNumberInput"] button { border: 0 !important; background: transparent !important; color: var(--navy) !important; box-shadow: none !important; padding: .2rem !important; }
+    [data-testid="stNumberInput"] button:hover { color: var(--purple) !important; transform: scale(1.15); }
+    [data-testid="stColumn"]:nth-child(1) [data-testid="stNumberInput"] { border-top: 5px solid var(--green); }
+    [data-testid="stColumn"]:nth-child(2) [data-testid="stNumberInput"] { border-top: 5px solid var(--blue); }
+    [data-testid="stColumn"]:nth-child(3) [data-testid="stNumberInput"] { border-top: 5px solid var(--coral); }
+    .tip { display: flex; align-items: center; gap: .7rem; line-height: 1.35; }
+    .tip-mark { display: inline-grid; place-items: center; flex: 0 0 auto; width: 2rem; height: 2rem; border-radius: 50%; background: var(--yellow); border: 2px solid var(--navy); color: var(--navy); font-size: 1.25rem; font-weight: 800; }
+    .stButton > button { min-height: 58px; font-size: 1.3rem !important; letter-spacing: .3px; }
     .hero-art { position: absolute; right: 7%; bottom: 7%; font-size: 8rem; filter: drop-shadow(0 18px 10px rgba(61,77,130,.16)); animation: floaty 4s ease-in-out infinite; }
     @keyframes floaty { 50% { transform: translateY(-12px) rotate(4deg); } }
     .slide-card { min-height: 320px; padding: 3rem; border-radius: 36px; }
@@ -232,7 +244,7 @@ elif page == "◌ Water Check":
         dissolved_oxygen = st.number_input("Dissolved oxygen (mg/L)", 0.0, 20.0, 7.0, 0.1)
     with col3:
         temperature = st.number_input("Temperature (°C)", -10.0, 60.0, 20.0, 0.5)
-        st.markdown("<div class='tip'>i Tip: record readings at the same time and place when comparing samples.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='tip'><span class='tip-mark'>i</span><span>Tip: record readings at the same time and place when comparing samples.</span></div>", unsafe_allow_html=True)
 
     if st.button("Assess my sample  →", use_container_width=True):
         result = assess_water_quality(ph, turbidity, nitrate, dissolved_oxygen, temperature)
