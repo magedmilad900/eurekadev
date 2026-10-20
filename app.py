@@ -41,6 +41,15 @@ st.markdown(
     h1, h2, h3, h4, h5, h6, small, li, td, th {
         font-family: 'Shadows Into Light Two', cursive !important;
     }
+    /* Keep Streamlit's own interface icons on their icon font. Without this,
+       the global cartoon font can expose names such as keyboard_double_arrow_left. */
+    [data-testid="stIconMaterial"], .material-symbols-rounded,
+    .material-symbols-outlined, .material-icons, .material-icons-outlined,
+    [class*="material-symbols"], [class*="material-icons"] {
+        font-family: 'Material Symbols Rounded', 'Material Icons', sans-serif !important;
+        font-weight: normal !important;
+        letter-spacing: normal !important;
+    }
     html { font-size: 18px; }
     body, h1, h2, h3, h4, h5, h6, p, label { color: var(--ink); }
     .stApp { background: radial-gradient(circle at 6% 8%, #ffe1d9 0, transparent 25%), radial-gradient(circle at 96% 12%, #d7f3ff 0, transparent 28%), radial-gradient(circle at 80% 92%, #e9ddff 0, transparent 28%), var(--bg); }
@@ -52,10 +61,31 @@ st.markdown(
     p, label, .stMarkdown, .stButton button, .stSelectbox, .stNumberInput,
     [data-testid="stCaptionContainer"], [data-testid="stWidgetLabel"] { font-size: 1.12rem; }
 
-    [data-testid="stSidebar"] { background: linear-gradient(180deg, #eef9ff 0%, #f0ebff 55%, #fff3dd 100%); border-right: 1px solid rgba(52,75,134,.14); }
+    [data-testid="stSidebar"] { background: linear-gradient(180deg, #eef9ff 0%, #f0ebff 55%, #fff3dd 100%); border-right: 1px solid rgba(52,75,134,.14); min-width: 330px; }
     [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] h3 { color: var(--ink) !important; }
     [data-testid="stSidebar"] .stRadio label { font-size: 1.15rem; font-weight: 800; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] { gap: 14px; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label {
+        position: relative; display: flex; align-items: center; min-height: 76px;
+        padding: 15px 16px !important; margin: 0 !important; border: 3px solid var(--ink);
+        border-radius: 24px; background: #ffffff; box-shadow: 5px 5px 0 rgba(24,37,63,.9);
+        transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        overflow: visible;
+    }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label::after {
+        content: ''; position: absolute; inset: 5px; border: 2px dashed rgba(24,37,63,.35);
+        border-radius: 17px; pointer-events: none;
+    }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:hover { transform: translate(-3px,-3px) rotate(-1deg); box-shadow: 8px 8px 0 rgba(24,37,63,.9); }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) { background: var(--yellow); transform: translate(-2px,-2px) rotate(1deg); box-shadow: 7px 7px 0 rgba(24,37,63,.9); }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(1) { background: #d7f6e7; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(2) { background: #ccefff; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(3) { background: #eee9ff; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(4) { background: #ffd7cf; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked)::before { content: '●'; position: absolute; right: 14px; top: 8px; font-size: 1.1rem; z-index: 2; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label p { font-size: 1.35rem !important; font-weight: 800; z-index: 1; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label input { accent-color: var(--ink); transform: scale(1.35); margin-right: 10px; }
 
     .hero { min-height: 390px; border: 1px solid rgba(52,75,134,.12); border-radius: 42px; padding: 4.4rem 4.5rem; margin-bottom: 2.2rem; background: linear-gradient(125deg, #d6f5ff 0%, #eee7ff 54%, #ffe1d6 100%); box-shadow: 0 25px 60px rgba(67, 66, 120, .16); position: relative; overflow: hidden; display: flex; align-items: center; }
     .hero:before { content: ''; position: absolute; width: 300px; height: 300px; right: -70px; bottom: -110px; border-radius: 50%; background: rgba(255,255,255,.48); }
