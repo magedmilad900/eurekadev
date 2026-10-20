@@ -17,7 +17,7 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
     :root {
         --ink: #18253f;
@@ -39,7 +39,7 @@ st.markdown(
     html, body, *, [class*="css"], [data-testid], [data-baseweb],
     button, input, textarea, select, option, label, p, span, div,
     h1, h2, h3, h4, h5, h6, small, li, td, th {
-        font-family: 'Shadows Into Light Two', cursive !important;
+        font-family: 'Abel', sans-serif !important;
     }
     /* Keep Streamlit's own interface icons on their icon font. Without this,
        the global cartoon font can expose names such as keyboard_double_arrow_left. */
@@ -67,10 +67,10 @@ st.markdown(
     [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] h3 { color: var(--ink) !important; }
     [data-testid="stSidebar"] .stRadio label { font-size: 1.15rem; font-weight: 800; }
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] { gap: 14px; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] { gap: 18px !important; padding: 8px 4px 10px; }
     [data-testid="stSidebar"] [data-testid="stRadio"] label {
         position: relative; display: flex; align-items: center; min-height: 76px;
-        padding: 15px 16px !important; margin: 0 !important; border: 3px solid var(--ink);
+        padding: 17px 16px !important; margin: 0 !important; border: 3px solid var(--ink);
         border-radius: 24px; background: #ffffff; box-shadow: 5px 5px 0 rgba(24,37,63,.9);
         transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
         overflow: visible;
@@ -80,13 +80,12 @@ st.markdown(
         border-radius: 17px; pointer-events: none;
     }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:hover { transform: translate(-3px,-3px) rotate(-1deg); box-shadow: 8px 8px 0 rgba(24,37,63,.9); }
-    [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) { background: var(--yellow); transform: translate(-2px,-2px) rotate(1deg); box-shadow: 7px 7px 0 rgba(24,37,63,.9); }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) { background: var(--yellow); border-color: var(--navy); transform: translate(-2px,-2px) rotate(1deg); box-shadow: 7px 7px 0 rgba(24,37,63,.9); }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(1) { background: #d7f6e7; }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(2) { background: #ccefff; }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(3) { background: #eee9ff; }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:nth-child(4) { background: #ffd7cf; }
-    [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked)::before { content: '●'; position: absolute; right: 14px; top: 8px; font-size: 1.1rem; z-index: 2; }
-    [data-testid="stSidebar"] [data-testid="stRadio"] label p { font-size: 1.35rem !important; font-weight: 800; z-index: 1; }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label p { font-size: 1.35rem !important; font-weight: 800; z-index: 1; margin: 0 !important; }
     [data-testid="stSidebar"] [data-testid="stRadio"] label input { accent-color: var(--ink); transform: scale(1.35); margin-right: 10px; }
 
     .hero { min-height: 390px; border: 1px solid rgba(52,75,134,.12); border-radius: 42px; padding: 4.4rem 4.5rem; margin-bottom: 2.2rem; background: linear-gradient(125deg, #d6f5ff 0%, #eee7ff 54%, #ffe1d6 100%); box-shadow: 0 25px 60px rgba(67, 66, 120, .16); position: relative; overflow: hidden; display: flex; align-items: center; }
@@ -112,22 +111,22 @@ st.markdown(
     .tip { background: linear-gradient(135deg,#fff4ca,#ffe3df); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
     .success-box { background: linear-gradient(135deg,#ddf9e9,#d8f1ff); border: 1px solid rgba(52,75,134,.14); border-radius: 22px; padding: 1.4rem 1.6rem; box-shadow: 0 10px 26px rgba(67, 66, 120, .08); }
     .footer { text-align: center; color: var(--muted); padding: 3rem 0 1rem; font-size: 1rem; }
-    .brand { display: inline-block; background: linear-gradient(135deg,#ffffff,#e8e1ff); border: 1px solid rgba(52,75,134,.12); border-radius: 18px; padding: .35rem 1rem; box-shadow: 0 8px 20px rgba(67,66,120,.12); font-size: 1.8rem; font-weight: 800; }
-    .mono-icon { display: inline-grid; place-items: center; width: 1.35em; height: 1.35em; border: 2px solid var(--ink); border-radius: 50%; font-size: .8em; line-height: 1; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; background: linear-gradient(135deg,#ffffff,#e8e1ff); border: 1px solid rgba(52,75,134,.12); border-radius: 20px; padding: .45rem 1.15rem .45rem .55rem; box-shadow: 0 8px 20px rgba(67,66,120,.12); font-size: 1.8rem; font-weight: 800; }
+    .mono-icon { display: inline-grid; place-items: center; width: 1.55em; height: 1.55em; border: 3px solid var(--navy); border-radius: 48% 52% 54% 46%; background: linear-gradient(145deg, var(--blue), var(--purple)); color: white; font-size: .82em; line-height: 1; transform: rotate(-8deg); box-shadow: 3px 3px 0 rgba(24,37,63,.75); }
     div.stButton > button, div.stDownloadButton > button { border: 0; border-radius: 18px; background: linear-gradient(135deg,var(--navy),var(--purple)); color: white !important; font-weight: 800; padding: .95rem 1.5rem; box-shadow: 0 10px 20px rgba(52,75,134,.22); transition: transform .2s, box-shadow .2s; }
     div.stButton > button *, div.stDownloadButton > button * { color: white !important; }
     div.stButton > button:hover, div.stDownloadButton > button:hover { background: linear-gradient(135deg,#263b73,#8064dc); color: white !important; transform: translateY(-3px); box-shadow: 0 15px 24px rgba(52,75,134,.28); }
     [data-testid="stMetric"] { background: rgba(255,255,255,.8); border: 1px solid rgba(52,75,134,.14); border-radius: 24px; padding: 1.4rem; box-shadow: 0 12px 28px rgba(67, 66, 120, .1); }
-    input, textarea, select, [data-baseweb="select"] > div, [data-baseweb="input"] > div { border: 1px solid rgba(52,75,134,.22) !important; border-radius: 16px !important; background: rgba(255,255,255,.9) !important; min-height: 48px; font-family: 'Shadows Into Light Two', cursive !important; font-size: 1.12rem !important; }
-    input::placeholder, textarea::placeholder { font-family: 'Shadows Into Light Two', cursive !important; color: #8a91a4 !important; }
-    [data-baseweb="select"] *, [data-baseweb="popover"] *, [role="listbox"] * { font-family: 'Shadows Into Light Two', cursive !important; }
+    input, textarea, select, [data-baseweb="select"] > div, [data-baseweb="input"] > div { border: 1px solid rgba(52,75,134,.22) !important; border-radius: 16px !important; background: rgba(255,255,255,.9) !important; min-height: 48px; font-family: 'Abel', sans-serif !important; font-size: 1.12rem !important; }
+    input::placeholder, textarea::placeholder { font-family: 'Abel', sans-serif !important; color: #8a91a4 !important; }
+    [data-baseweb="select"] *, [data-baseweb="popover"] *, [role="listbox"] * { font-family: 'Abel', sans-serif !important; }
     [data-testid="stExpander"] { border: 1px solid rgba(52,75,134,.14); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 12px 28px rgba(67, 66, 120, .08); padding: .3rem; }
     [data-testid="stDataFrame"], [data-testid="stTable"] { border: 1px solid rgba(52,75,134,.14); border-radius: 22px; overflow: hidden; margin: .8rem 0 1rem; }
     [data-testid="stProgressBar"] { padding: .25rem 0 .8rem; }
     [data-testid="stProgressBar"] > div > div { background: linear-gradient(90deg, #5ac58b, #a995ff, #ff9f91); border-radius: 999px; }
     [data-testid="stAlert"] { border-radius: 20px; margin: 1rem 0; }
-    [data-testid="stMetricValue"], [data-testid="stMetricLabel"], [data-testid="stMetricDelta"] { font-family: 'Shadows Into Light Two', cursive !important; }
-    [data-testid="stRadio"] label, [data-testid="stCheckbox"] label, [data-testid="stSelectbox"] label { font-family: 'Shadows Into Light Two', cursive !important; }
+    [data-testid="stMetricValue"], [data-testid="stMetricLabel"], [data-testid="stMetricDelta"] { font-family: 'Abel', sans-serif !important; }
+    [data-testid="stRadio"] label, [data-testid="stCheckbox"] label, [data-testid="stSelectbox"] label { font-family: 'Abel', sans-serif !important; }
     .hero-art { position: absolute; right: 7%; bottom: 7%; font-size: 8rem; filter: drop-shadow(0 18px 10px rgba(61,77,130,.16)); animation: floaty 4s ease-in-out infinite; }
     @keyframes floaty { 50% { transform: translateY(-12px) rotate(4deg); } }
     .slide-card { min-height: 320px; padding: 3rem; border-radius: 36px; }
@@ -154,7 +153,7 @@ if "last_result" not in st.session_state:
 
 # ---------- Sidebar navigation ----------
 with st.sidebar:
-    st.markdown("<div class='brand'><span class='mono-icon'>◉</span> GreenWatch</div>", unsafe_allow_html=True)
+    st.markdown("<div class='brand'><span class='mono-icon'>G</span><span>GreenWatch</span></div>", unsafe_allow_html=True)
     st.caption("Little measurements. Better decisions.")
     st.divider()
     page = st.radio(
